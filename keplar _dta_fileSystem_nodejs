@@ -30,3 +30,5 @@ fs.createReadStream("keplar_data.csv")
     // console.log(habitablePlanet.map((hplanet => hplanet['kepler_name'])));
     console.log("done");
   });
+
+//https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls&config=cumulative
