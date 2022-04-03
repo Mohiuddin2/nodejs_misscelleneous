@@ -1,0 +1,8 @@
+for country flag
+<% const country=()=> {
+                                var str = applicant.country_of_birth;
+                                str = str.slice(0, 2).toLowerCase();
+
+                                return str;
+                                } %>
+                                <% country() %>
