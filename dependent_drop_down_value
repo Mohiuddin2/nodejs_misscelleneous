@@ -1,4 +1,4 @@
-<form name="myform" id="myForm">
+1. <form name="myform" id="myForm">
     <select name="optone" id="continentSel" size="1" class="form-control">
         <option value="" selected="selected">Select continent</option>
     </select>
@@ -51,3 +51,52 @@
         }
     }
     </script>
+    
+    2.
+    
+
+                                                    <div class="form-group col-md-6">
+                                                        <label>Choose University</label>
+                                                        <select name="slct1" id="slct1" onchange="populate(this.id, 'slct2')" class="form-control" required>
+                                                            <option value="">Select University</option>
+                                                            <option value="gelisim">Gelisim</option>
+                                                            <option value="altinbasy">Altinbasy</option>
+                                                            <option value="aydin">Aydin</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label>Major</label>
+                                                        <select name="slct2" id="slct2" class="form-control">
+                                                        <option value="">Select Major</option>
+                                                        </select>
+                                                    </div>
+    <script>
+   function populate(s1, s2){
+       let a1 = document.getElementById(s1)
+       let a2 = document.getElementById(s2)
+
+       a2.innerHTML = "";
+       let optionArry;
+
+       if(a1.value == "gelisim") {
+           optionArry = ['english|English', 'turkis|Turkis'];
+       }
+       else if(a1.value == "altinbasy") {
+           optionArry = ['english1|English1', 'turkis1|Turkis1']
+       }
+       else if(a1.value == "aydin") {
+           optionArry = ['english3|English3', 'turkis4|Turkis4']
+       }
+
+       for(let option in optionArry){
+           let pair = optionArry[option].split("|");
+           let newoption = document.createElement('option');
+
+            newoption.value = pair[0];
+            newoption.innerHTML = pair[1]
+            a2.options.add(newoption);
+
+       }
+   }
+</script>
+
