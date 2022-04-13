@@ -79,13 +79,13 @@
        let optionArry;
 
        if(a1.value == "gelisim") {
-           optionArry = ['english|English', 'turkis|Turkis'];
+           optionArry = ['not_seleted|Select','english|English', 'turkis|Turkis'];
        }
        else if(a1.value == "altinbasy") {
-           optionArry = ['english1|English1', 'turkis1|Turkis1']
+           optionArry = ['not_seleted|Select','english1|English1', 'turkis1|Turkis1']
        }
        else if(a1.value == "aydin") {
-           optionArry = ['english3|English3', 'turkis4|Turkis4']
+           optionArry = ['not_seleted|Select','english3|English3', 'turkis4|Turkis4']
        }
 
        for(let option in optionArry){
