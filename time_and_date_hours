@@ -1,0 +1,14 @@
+
+                      var dt = student.createAt;
+                      let dat = dt.setHours( dt.getHours() + 4 );
+                      let newdate = new Date(dat)
+                      let dfinale = newdate.toLocaleTimeString()
+                      console.log(dfinale)
+                      return dfinale
+                      } %>
+   <body>
+      <script>
+         var dt = new Date();
+         dt.setHours( dt.getHours() + 2 );
+         document.write( dt );
+      </script>
