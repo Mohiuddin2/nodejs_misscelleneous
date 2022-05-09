@@ -15,3 +15,12 @@ console.log("Cccccccccccccc", typeof s)
 res.send(s);
 
 });
+
+// for printing specific length of data from an array
+
+  let datum = Object.values(d);
+  let datas = [];
+  for (let i = 0; i < 10; i++) {
+      console.log()
+      datas.push(datum[i])
+  }
