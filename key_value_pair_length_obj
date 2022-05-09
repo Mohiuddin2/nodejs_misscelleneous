@@ -15,3 +15,16 @@ let length = Object.keys(d).length // lenght 534
       console.log()
       datas.push(datum[i])
   }
+
+  let dataObject = Object.entries(response)[5][1];
+
+  let dataArray = Object.values(dataObject);
+
+  let datas = [];
+  for(var i in dataObject)
+  datas.push([i, dataObject[i]]);
+
+  let result = []
+for(let i = 0; i < 9; i++){
+    result.push(datas[i])
+}
