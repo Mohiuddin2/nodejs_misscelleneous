@@ -3,10 +3,15 @@ const response = await axios.get("https://api.wazirx.com/api/v2/tickers");
 
 let d = Object.entries(response)[5][1]
 
-let l = Object.keys(d).length
-console.log("Cccccccccccccc", l)
+
+let l = Object.keys(d).length // lenght 534
+
+let s = Object.values(d)[1]
+
+
+console.log("Cccccccccccccc", typeof s)
 // let l = Object.keys(d).length
 // console.log(l);
-res.send("goog");
+res.send(s);
 
 });
