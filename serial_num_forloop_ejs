@@ -1,0 +1,32 @@
+<% for(let i=0; i < data.length; i++) {%>
+                  <% console.log(data.length) %> 
+                  <tr>
+                    <td class="align-middle">
+                      <h4 class="table-text">
+                        <%= i+1 %>
+
+                      </h4>
+                    </td>
+                    <td class="align-middle">
+                      <%= data[i].name %>
+                        
+                    </td>
+                    <td class="align-middle">
+                      <h4 class="table-text"> ₹ <%= data[i].last %>
+                      </h4>
+                    </td>
+                    <td class="align-middle">
+                      <h4 class="table-text"><span>₹ <%= data[i].buy %> / ₹ <%= data[i].sell %></span></h4>
+                    </td>
+                    <td class="align-middle">
+                      <h4 class="table-text color-green">
+                        <%= data[i].volume %>
+                      </h4>
+                    </td>
+                    <td class="align-middle">
+                      <h4 class="table-text color-green">
+                        <%= data[i].base_unit %>
+                      </h4>
+                    </td>
+                  </tr>
+                  <% } %>
