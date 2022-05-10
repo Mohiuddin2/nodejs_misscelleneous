@@ -1,0 +1,24 @@
+app.get("/", async (req, res) => {
+  const response = await axios.get("https://api.wazirx.com/api/v2/tickers");
+
+  let dataObject = Object.entries(response)[5][1];
+
+  let dataArray = Object.values(dataObject);
+  let save;
+
+  for (let i = 0; i < 10; i++) {
+    let { name, last, buy, sell, volume, base_unit } = dataArray[i];
+    save = await Info.create({
+      name,
+      last,
+      buy,
+      sell,
+      volume,
+      base_unit,
+    });
+    console.log(save)
+  }
+
+  console.log(save);
+  res.send("Ok");
+});
