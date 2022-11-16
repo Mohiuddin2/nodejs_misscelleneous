@@ -1,0 +1,19 @@
+data = {}
+
+data.table = []
+
+// form making the number to string
+for (i=0; i <26 ; i++){
+   var obj = {
+       id: i,
+       square: i * i
+   }
+   data.table.push(obj)
+}
+
+
+fs.writeFile ("input.json", JSON.stringify(data), function(err) {
+    if (err) throw err;
+    console.log('complete');
+    }
+);
