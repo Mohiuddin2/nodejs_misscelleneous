@@ -1,17 +1,17 @@
-data = [{jsong data will be here}]
+app.get("/makejosnstring", (req, res) => {
+  let data = [{}]
+  data.table = [];
 
-data.table = []
-
-// form making the number to string
   data.forEach(function (item) {
     let flat = item.flatNo;
     let aflat = `${flat}`;
     item.flatNo = aflat;
   });
 
-
-fs.writeFile ("input.json", JSON.stringify(data), function(err) {
+  fs.writeFile("input.json", JSON.stringify(data), function (err) {
     if (err) throw err;
-    console.log('complete');
-    }
-);
+    console.log("complete");
+  });
+
+  res.send("Convertion Done");
+});
