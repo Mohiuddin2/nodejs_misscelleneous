@@ -1,0 +1,7 @@
+You could give your hidden field an id:
+
+<input type="hidden" id="myField" value="" />
+and then when you want to assign its value:
+
+document.getElementById('myField').value = product(2, 3);
+Make sure that you are performing this assignment after the DOM has been fully loaded, for example in the window.load event.
