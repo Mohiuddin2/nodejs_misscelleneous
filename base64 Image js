@@ -1,0 +1,83 @@
+
+  <div class="row">
+                <!-- <div class="col col-lg-3 col-sm-6 col-6" style="width:150px; margin-right: 28px;">
+                    <div>
+                        <input class="form-control form-control-lg" id="selectAvatar" type="file" />
+                        <div class="col">
+                            <h6>Base64 Output</h6>
+                            <input type="hidden" id="beforeImage" name="beforeImage"  capture="environment" value="">
+                        </div>
+                    </div>
+                    <div>
+                        <img class="img" id="avatar" />
+                    </div>
+                </div> -->
+
+           
+                <!-- 
+                <div class="col col-lg-3 col-sm-6 col-6" style="width:150px; margin-right: 28px;">
+                    <div>
+                        <input class="form-control form-control-lg" id="selectAvatarafterimage"   capture="environment" type="file" />
+                        <div class="col">
+                            <h6>Base64 Output</h6>
+                            <input type="hidden" id="afterImage" name="afterImage" value="">
+                        </div>
+                    </div>
+                    <div>
+                        <img class="img" id="avatarafter" />
+                    </div>
+                </div> -->
+
+                <!-- signature -->
+
+                <div class="col  col-lg-3 col-sm-6 col-6">
+                    <label for="tenants_rating">Comments(If any)</label>
+                    <textarea class="form-control" name="tenants_rating" id="exampleFormControlTextarea5"
+                        rows="1"></textarea>
+                </div>
+                <div class="col col-lg-3 col-sm-6 col-6" style="margin-left: 28px;">
+                    <label for="exampleFormControlTextarea5">Client's Signature</label>
+                    <input type="hidden" name="signature" id="savesignature" value="">
+                    <canvas id="signature-pad" class="border border-success rounded mt-3"></canvas>
+
+                    <button class="btn btn" id="clear">Clear</button>
+                    <!-- <button id="save">Save</button> -->
+                </div>
+                <br>
+
+                <!-- Form ends herer -->
+                <button type="submit" id="save" onclick="allbase64ImageCall()" class="btn btn-primary">Save
+                    JobCard</button>
+
+<script>
+        const input = document.getElementById("selectAvatar");
+        const avatar = document.getElementById("avatar");
+        const textArea = document.getElementById("beforeImage");
+
+        const convertBase64 = (file) => {
+            return new Promise((resolve, reject) => {
+                const fileReader = new FileReader();
+                fileReader.readAsDataURL(file);
+
+                fileReader.onload = () => {
+                    resolve(fileReader.result);
+                };
+
+                fileReader.onerror = (error) => {
+                    reject(error);
+                };
+            });
+        };
+
+        const uploadImage = async (event) => {
+            const file = event.target.files[0];
+            const base64 = await convertBase64(file);
+            avatar.src = base64;
+            console.log("avatar.src", avatar.src.toString())
+            textArea.value = avatar.src.toString();
+        };
+
+        input.addEventListener("change", (e) => {
+            uploadImage(e);
+        });
+
