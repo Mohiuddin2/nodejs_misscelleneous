@@ -1,4 +1,8 @@
-
+ // to get the real local date
+ <%= new Date(appointments[i].date).toLocaleDateString() %>
+ 
+ 
+ 
                       var dt = student.createAt;
                       let dat = dt.setHours( dt.getHours() + 4 );
                       let newdate = new Date(dat)
