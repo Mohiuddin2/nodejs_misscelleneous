@@ -1,0 +1,245 @@
+document.addEventListener("DOMContentLoaded", function () {
+  let startDate = new Date(); // Start with the current date
+  let currentDate = new Date(startDate.getFullYear(), startDate.getMonth(), 1);
+
+  let dateContainer = document.getElementById("dateContainer");
+  let currentMonthLabel = document.getElementById("currentMonth");
+  let prevMonthBtn = document.getElementById("prevMonthBtn");
+  let nextMonthBtn = document.getElementById("nextMonthBtn");
+
+  renderDates(currentDate);
+
+  function renderDates(date) {
+    dateContainer.innerHTML = "";
+
+    let lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+    currentMonthLabel.innerText =
+      getMonthName(date.getMonth()) + " " + date.getFullYear();
+
+    for (let i = 1; i <= lastDay.getDate(); i++) {
+      let day = new Date(date.getFullYear(), date.getMonth(), i);
+      let dateRow = document.createElement("div");
+      dateRow.classList.add("row");
+      dateRow.classList.add("mb-2");
+
+      let form = document.createElement("form");
+      form.id = `myForm${i}`;
+
+      // make columng for date
+      let dateCol = document.createElement("div");
+      let inpuDateHidden = document.createElement("div");
+      let inpuDateElement = document.createElement('input')
+      // inpuDateElement.classList.add("hidden-input");
+      inpuDateElement.type = "date"
+      inpuDateElement.setAttribute("name", 'date')
+      // inpuDateElement.setAttribute
+
+      dateCol.classList.add("col");
+      dateCol.classList.add("bg-success");
+      // dateCol.setAttribute("name", "date");
+      
+      dateCol.innerText = day.toLocaleDateString("en-GB");
+      // dateCol.setAttribute("value", dateCol.innerText)
+      // console.log(dateCol)
+      inpuDateElement.value = dateCol.innerText
+      inpuDateHidden.appendChild(inpuDateElement)
+      dateCol.appendChild(inpuDateHidden)
+
+      // make active button
+      let buttonDiv = document.createElement("div");
+      buttonDiv.classList.add("col");
+      let button = document.createElement("button");
+        button.setAttribute("type", "button");
+        // button.setAttribute("type", "submit");
+      
+      button.setAttribute('onclick', `setDate(${form.id})`);
+      
+      button.classList.add("btn");
+      button.classList.add("btn-danger");
+      button.innerText = "Set";
+      buttonDiv.appendChild(button);
+      // make columng for date
+      let timeCol = document.createElement("div");
+      timeCol.classList.add("col");
+      timeCol.classList.add("bg-white");
+
+      let selectElement = document.createElement("select");
+      selectElement.setAttribute("name", "time")
+      let option1 = document.createElement("option");
+      option1.value = "09";
+      option1.textContent = "09.00 Am";
+
+      let option2 = document.createElement("option");
+      option2.value = "10";
+      option2.textContent = "10.00 Am";
+
+      let option3 = document.createElement("option");
+      option3.value = "11";
+      option3.textContent = "11.00 Am";
+
+      let option4 = document.createElement("option");
+      option4.value = "01";
+      option4.textContent = "01.00 pm";
+
+      let option5 = document.createElement("option");
+      option5.value = "02";
+      option5.textContent = "02.00 pm";
+
+      let option6 = document.createElement("option");
+      option6.value = "03";
+      option6.textContent = "03.00 pm";
+
+      let option7 = document.createElement("option");
+      option7.value = "04";
+      option7.textContent = "04.00 pm";
+
+      let option8 = document.createElement("option");
+      option8.value = "05";
+      option8.textContent = "05.00 pm";
+
+      selectElement.appendChild(option1);
+      selectElement.appendChild(option2);
+      selectElement.appendChild(option3);
+      selectElement.appendChild(option4);
+      selectElement.appendChild(option5);
+      selectElement.appendChild(option6);
+      selectElement.appendChild(option7);
+      selectElement.appendChild(option8);
+
+      timeCol.appendChild(selectElement);
+      dateRow.appendChild(dateCol);
+      dateRow.appendChild(timeCol);
+      dateRow.appendChild(buttonDiv);
+
+      form.appendChild(dateRow);
+
+      dateContainer.appendChild(form);
+    }
+  }
+
+  prevMonthBtn.addEventListener("click", function () {
+    currentDate.setMonth(currentDate.getMonth() - 1);
+    renderDates(currentDate);
+  });
+
+  nextMonthBtn.addEventListener("click", function () {
+    currentDate.setMonth(currentDate.getMonth() + 1);
+    renderDates(currentDate);
+  });
+
+  function getMonthName(monthIndex) {
+    let monthNames = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    return monthNames[monthIndex];
+  }
+
+
+
+  // setTimeout(() => {
+
+    // function setDate(event) {
+    //   // event.preventDefault()
+    //   var formId = event.target;
+    //   console.log(formId)
+
+    //   const form = document.getElementById(formId);
+    //   console.log("form", form)
+    //   form.addEventListener('submit', (e) => {
+    //     e.preventDefault();
+    
+    //     const formData = new FormData(form);
+    //     // console.log("Clicked on", e)
+    //     const data = {
+    //       date: formData.get("date"),
+    //       time: formData.get("time"),
+    //     };
+    //     console.log(data)
+    //   })
+    // }
+  // }, 3000)
+//handle form submission
+
+  // Capture form submit event
+
+  // Emit socket event with the form data
+  //   getschedule.emit('formData', data);
+  //   const forma = document.querySelector('.containers')
+});
+
+
+// },)
+// setTimeout(() => {
+//     // function setDate(event){
+//     const form = document.getElementById('myForm');
+//     console.log("form", form)
+//     form.addEventListener('submit', (e) => {
+//         e.preventDefault();
+
+//         const formData = new FormData(form);
+//         // console.log("Clicked on", e)
+//         const data = {
+//             date: formData.get("date"),
+//             time: formData.get("time"),
+//         };
+//         console.log(data)
+//     })
+// },2000)
+    // }
+
+
+// setButton.addEventListener("click", (event) => {
+//   event.preventDefault();
+//   console.log(data);
+//   // Get form data
+//   const formData = new FormData(form);
+//   const data = {
+//     date: formData.get("date"),
+//     time: formData.get("time"),
+//     flatNo: formData.get("flatNo"),
+//     tower: formData.get("tower"),
+//   };
+// });
+const setSchedule = io('/setschedule');
+
+setSchedule.on('server', (data) => { 
+  console.log(data)
+})
+
+function setDate(forms) {
+  console.log("Button Clicked: ", forms.id)
+
+  const form = document.getElementById(forms.id)
+  form.addEventListener('click', (e) => {
+    e.preventDefault()
+    const formData = new FormData(form);
+
+    // const [day, month, year] = formData.get('date').split('/')
+    // const date = `${day}/${parseInt(month) + 1}/${parseInt(year)+1}`;
+
+    // console.log("Date", date)
+    const data = {
+      date: formData.get('date'),
+      // date: date,
+      time: formData.get('time')
+    }
+    setSchedule.emit('formData', data)
+  })
+}
+
+setSchedule.on('data', (save) => {
+  console.log('from db', save)
+})
+
+
