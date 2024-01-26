@@ -1,3 +1,4 @@
+const fs = require('fs');
 app.get("/makejosnstring", (req, res) => {
   let data = [{}]
   data.table = [];
