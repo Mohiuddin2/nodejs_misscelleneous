@@ -1,0 +1,73 @@
+app.get("/search", async (req, res) => {
+  try {
+    const collection = mongoose.model("AllFlats");
+
+    // const query = { tower: "Maha Tower", flatNo: "601" };
+    // const updateOperation = {
+    //   $set: {
+    //     type: "Update BHK",
+    //   },
+    // };
+    // const result = await collection.updateMany(query, updateOperation);
+
+    const flatNumbers = [
+      "603",
+      "604",
+      "703",
+      "704",
+      "803",
+      "804",
+      "903",
+      "904",
+      "1003",
+      "1004",
+      "1103",
+      "1104",
+      "1203",
+      "1204",
+      "1303",
+      "1304",
+      "1403",
+      "1404",
+      "1503",
+      "1504",
+      "1603",
+      "1604",
+      "1703",
+      "1704",
+      "1803",
+      "1804",
+      "1903",
+      "1904",
+      "2003",
+      "2004",
+      "2103",
+      "2104",
+      "2203",
+      "2204",
+      "2303",
+      "2304",
+      "2403",
+      "2504",
+      "2603",
+      "2604",
+      "2703",
+      "2704",
+      "2803",
+      "2804",
+      "2903",
+      "2904",
+    ];
+
+    const query = {
+      tower: "Maha Tower",
+      flatNo: { $in: flatNumbers },
+    };
+
+    const updateOperation = {
+      $set: {
+        type: "2 BHK",
+      },
+    };
+    const result = await collection.find(query);
+    // const result = await collection.updateMany(query, updateOperation);
